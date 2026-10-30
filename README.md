@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Precious Metals Pricing Calculator
 
-## Getting Started
+A pricing tool for buying and selling precious metals. Enter an item's metal, purity and weight, and it calculates melt value, a store buy offer and a suggested retail price. A second panel totals the silver content of common bullion coins.
 
-First, run the development server:
+**Built with:** Next.js, React, TypeScript, Tailwind CSS
+
+## Features
+
+- Jewelry pricing for 24k, 18k, 14k and 10k gold, sterling silver and platinum, by grams or pennyweight
+- Adjustable buy margin and retail multiplier, with results that update instantly as you type
+- Coin calculator for 90% silver coins (by face value), Morgan and Peace dollars, and American Silver Eagles
+- Spot price panel for gold, silver and platinum (the Sync button currently loads sample prices; a live price feed is a planned next step)
+
+## Run it locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## About
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built by Chelsea Gallagher as a portfolio project while studying Software Development at Ivy Tech Community College, with help from AI-assisted development tools.
