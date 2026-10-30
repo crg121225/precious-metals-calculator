@@ -93,7 +93,7 @@ export default function Home() {
             Precious Metals Pricing Calculator{' '}
             <span className="font-light text-slate-500">| Valuation Engine</span>
           </h1>
-          <p className="mt-1 text-xs text-slate-400">Engineered by Chelsea Gallagher Tech Advisory LLC</p>
+          <p className="mt-1 text-xs text-slate-400">Built by Chelsea Gallagher</p>
         </div>
 
         <div className="flex flex-wrap items-center gap-4 rounded-xl border border-slate-800 bg-slate-900 px-5 py-3 shadow-2xl">
