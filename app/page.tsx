@@ -87,10 +87,10 @@ export default function Home() {
       <header className="mx-auto mb-8 flex max-w-7xl flex-col items-start justify-between gap-4 border-b border-slate-800 pb-6 md:flex-row md:items-center">
         <div>
           <span className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500">
-            Proprietary Build Platform
+            Portfolio Project
           </span>
           <h1 className="mt-1 text-3xl font-black tracking-tight text-white">
-            Rockville Coin &amp; Jewelry{' '}
+            Precious Metals Pricing Calculator{' '}
             <span className="font-light text-slate-500">| Valuation Engine</span>
           </h1>
           <p className="mt-1 text-xs text-slate-400">Engineered by Chelsea Gallagher Tech Advisory LLC</p>
