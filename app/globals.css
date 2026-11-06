@@ -21,9 +21,17 @@
 
 body {
   margin: 0;
-  background: #07111e;
-  color: var(--foreground);
+  background: #020617; /* matches the calculator's dark background on every page */
+  color: #f1f5f9;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Printed pages (the price sheet) come out black on white. */
+@media print {
+  body {
+    background: #ffffff;
+    color: #000000;
+  }
 }
 
 * {

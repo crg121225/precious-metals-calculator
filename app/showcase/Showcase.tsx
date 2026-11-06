@@ -6,7 +6,6 @@
 // The owner stays in control: the photo never leaves his phone or computer, nothing is posted for him,
 // and he decides what goes on every card. When a piece sells, he marks it SOLD and shares the updated card.
 
-import Link from 'next/link';
 import React, { useEffect, useRef, useState } from 'react';
 import AboutThisTool from '../components/AboutThisTool';
 import {
@@ -393,20 +392,18 @@ export default function Showcase() {
   };
 
   const input =
-    'mt-1 block w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-base text-slate-900 focus:border-amber-600 focus:outline-none';
+    'mt-1 block w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-base text-slate-100 focus:border-amber-500 focus:outline-none';
   const button =
     'rounded-full border px-4 py-2.5 text-xs font-bold uppercase tracking-[0.12em] disabled:cursor-not-allowed disabled:opacity-50';
-  const primary = `${button} border-amber-700 bg-amber-600 text-white hover:bg-amber-500`;
-  const secondary = `${button} border-slate-300 bg-white text-slate-700 hover:border-slate-500`;
+  const primary = `${button} border-amber-600/40 bg-amber-600/90 text-slate-950 hover:bg-amber-500`;
+  const secondary = `${button} border-slate-700 bg-slate-900 text-slate-200 hover:border-slate-500`;
 
   return (
-    <main className="min-h-screen bg-slate-100 p-4 text-slate-900 md:p-8">
-      <header className="mx-auto mb-6 max-w-6xl">
-        <Link href="/" className="text-xs font-bold text-amber-700 hover:underline">
-          ← Back to the pricing calculator
-        </Link>
-        <h1 className="mt-1 text-2xl font-black tracking-tight">Showcase Cards</h1>
-        <p className="max-w-2xl text-sm text-slate-600">
+    <main className="min-h-screen bg-slate-950 p-4 text-slate-100 md:p-8">
+      <header className="mx-auto mb-6 max-w-6xl border-b border-slate-800 pb-5">
+        <span className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500">Jewelry Case</span>
+        <h1 className="mt-1 text-3xl font-black tracking-tight text-white">Showcase Cards</h1>
+        <p className="max-w-2xl text-sm text-slate-400">
           One picture with the answers already on it: item number, price (or &ldquo;price in store&rdquo;) and your
           in-store rules. Fewer &ldquo;how much?&rdquo; and &ldquo;is it still available?&rdquo; messages.
         </p>
@@ -414,9 +411,9 @@ export default function Showcase() {
 
       <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-2">
         {/* Editor */}
-        <section className="space-y-4 rounded-xl border border-slate-300 bg-white p-5">
+        <section className="space-y-4 rounded-xl border border-slate-700 bg-slate-900 p-5">
           <div className="flex items-center justify-between">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-amber-500">
               {editingId ? `Editing item #${card.itemNo}` : 'New card'}
             </h2>
             {editingId && (
@@ -435,7 +432,7 @@ export default function Showcase() {
           </div>
 
           <div className="grid grid-cols-[7rem_1fr] gap-3">
-            <label className="text-xs text-slate-600">
+            <label className="text-xs text-slate-400">
               Item #
               <input
                 className={input}
@@ -444,7 +441,7 @@ export default function Showcase() {
                 onChange={(e) => updateCard('itemNo', e.target.value)}
               />
             </label>
-            <label className="text-xs text-slate-600">
+            <label className="text-xs text-slate-400">
               What is it?
               <input
                 className={input}
@@ -455,7 +452,7 @@ export default function Showcase() {
             </label>
           </div>
 
-          <label className="block text-xs text-slate-600">
+          <label className="block text-xs text-slate-400">
             Details (optional)
             <input
               className={input}
@@ -466,7 +463,7 @@ export default function Showcase() {
           </label>
 
           <div className="grid grid-cols-2 items-end gap-3">
-            <label className="text-xs text-slate-600">
+            <label className="text-xs text-slate-400">
               Price
               <input
                 className={`${input} font-mono ${card.showPrice ? '' : 'opacity-40'}`}
@@ -477,12 +474,12 @@ export default function Showcase() {
                 onChange={(e) => updateCard('price', e.target.value)}
               />
             </label>
-            <div className="flex rounded-md border border-slate-300 p-1 text-xs font-bold">
+            <div className="flex rounded-md border border-slate-700 p-1 text-xs font-bold">
               <button
                 type="button"
                 aria-pressed={card.showPrice}
                 onClick={() => updateCard('showPrice', true)}
-                className={`flex-1 rounded px-2 py-2 ${card.showPrice ? 'bg-amber-600 text-white' : 'text-slate-600'}`}
+                className={`flex-1 rounded px-2 py-2 ${card.showPrice ? 'bg-amber-600 text-slate-950' : 'text-slate-400'}`}
               >
                 Show price
               </button>
@@ -490,7 +487,7 @@ export default function Showcase() {
                 type="button"
                 aria-pressed={!card.showPrice}
                 onClick={() => updateCard('showPrice', false)}
-                className={`flex-1 rounded px-2 py-2 ${!card.showPrice ? 'bg-amber-600 text-white' : 'text-slate-600'}`}
+                className={`flex-1 rounded px-2 py-2 ${!card.showPrice ? 'bg-amber-600 text-slate-950' : 'text-slate-400'}`}
               >
                 Price in store
               </button>
@@ -502,13 +499,13 @@ export default function Showcase() {
             aria-pressed={card.sold}
             onClick={() => updateCard('sold', !card.sold)}
             className={`w-full rounded-md border px-3 py-2.5 text-sm font-bold ${
-              card.sold ? 'border-red-700 bg-red-700 text-white' : 'border-slate-300 bg-white text-slate-700'
+              card.sold ? 'border-red-700 bg-red-700 text-white' : 'border-slate-700 bg-slate-900 text-slate-200'
             }`}
           >
             {card.sold ? 'SOLD (tap to mark available)' : 'Available (tap to mark SOLD)'}
           </button>
 
-          <div className="flex flex-wrap gap-2 border-t border-slate-200 pt-4">
+          <div className="flex flex-wrap gap-2 border-t border-slate-800 pt-4">
             {canShare && (
               <button type="button" className={primary} onClick={onShare} disabled={busy}>
                 Share image…
@@ -521,9 +518,9 @@ export default function Showcase() {
               Copy post text
             </button>
           </div>
-          {message && <p className="text-xs text-slate-600">{message}</p>}
+          {message && <p className="text-xs text-slate-400">{message}</p>}
           {storageFull && (
-            <p className="text-xs text-red-600">
+            <p className="text-xs text-red-400">
               This device is out of room for saved cards. Remove a few old ones from the list below.
             </p>
           )}
@@ -532,9 +529,9 @@ export default function Showcase() {
             Sharing or saving also keeps the card in your list below, so you can mark it SOLD later.
           </p>
 
-          <details className="rounded-md border border-slate-200 p-3 text-xs text-slate-600">
+          <details className="rounded-md border border-slate-800 p-3 text-xs text-slate-400">
             <summary className="cursor-pointer font-bold">Post text and card settings</summary>
-            <pre className="mt-2 whitespace-pre-wrap rounded bg-slate-50 p-2 font-sans text-slate-700">
+            <pre className="mt-2 whitespace-pre-wrap rounded bg-slate-950 p-2 font-sans text-slate-200">
               {postTextFor(card, settings)}
             </pre>
             <label className="mt-3 block">
@@ -580,15 +577,15 @@ export default function Showcase() {
             ref={previewRef}
             width={CARD_W}
             height={CARD_H}
-            className="w-full rounded-lg bg-white shadow-xl"
+            className="w-full rounded-lg bg-slate-900 shadow-xl"
             aria-label="Showcase card preview"
           />
         </section>
       </div>
 
       {/* Recent cards */}
-      <section className="mx-auto mt-8 max-w-6xl rounded-xl border border-slate-300 bg-white p-5">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">Your recent cards</h2>
+      <section className="mx-auto mt-8 max-w-6xl rounded-xl border border-slate-700 bg-slate-900 p-5">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-amber-500">Your recent cards</h2>
         <p className="mt-1 text-xs text-slate-500">
           Saved only on this device (the last {MAX_RECENT}). When something sells, tap <strong>Mark sold</strong>,
           then share the updated card.
@@ -598,24 +595,24 @@ export default function Showcase() {
         ) : (
           <ul className="mt-3 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {recent.map((r) => (
-              <li key={r.id} className="flex gap-3 rounded-lg border border-slate-200 p-2">
+              <li key={r.id} className="flex gap-3 rounded-lg border border-slate-800 p-2">
                 {r.photo ? (
                   // eslint-disable-next-line @next/next/no-img-element -- a local photo kept in this browser
                   <img src={r.photo} alt="" className="h-20 w-20 shrink-0 rounded object-cover" />
                 ) : (
-                  <div className="h-20 w-20 shrink-0 rounded bg-slate-200" />
+                  <div className="h-20 w-20 shrink-0 rounded bg-slate-800" />
                 )}
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-semibold">
                     #{r.itemNo} {r.title || 'Untitled'}
                   </p>
-                  <p className={`text-xs ${r.sold ? 'font-bold text-red-700' : 'text-slate-500'}`}>
+                  <p className={`text-xs ${r.sold ? 'font-bold text-red-400' : 'text-slate-500'}`}>
                     {r.sold ? 'SOLD' : priceLabel(r)}
                   </p>
                   <div className="mt-1 flex flex-wrap gap-1">
                     <button
                       type="button"
-                      className="rounded border border-slate-300 px-2 py-1 text-xs"
+                      className="rounded border border-slate-700 px-2 py-1 text-xs"
                       onClick={() => openCard(r)}
                     >
                       Open
@@ -623,7 +620,7 @@ export default function Showcase() {
                     {!r.sold && (
                       <button
                         type="button"
-                        className="rounded border border-red-300 px-2 py-1 text-xs text-red-700"
+                        className="rounded border border-red-500/50 px-2 py-1 text-xs text-red-400"
                         onClick={() => openCard(r, true)}
                       >
                         Mark sold
@@ -631,7 +628,7 @@ export default function Showcase() {
                     )}
                     <button
                       type="button"
-                      className="rounded px-2 py-1 text-xs text-slate-400 hover:text-red-600"
+                      className="rounded px-2 py-1 text-xs text-slate-400 hover:text-red-400"
                       onClick={() => removeCard(r.id)}
                       aria-label={`Remove item ${r.itemNo} from list`}
                     >
@@ -645,7 +642,7 @@ export default function Showcase() {
         )}
       </section>
 
-      <AboutThisTool light />
+      <AboutThisTool />
     </main>
   );
 }

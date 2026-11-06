@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import React, { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import AboutThisTool from './components/AboutThisTool';
 
@@ -340,20 +339,6 @@ export default function Home() {
             <span className="font-light text-slate-500">| Valuation Engine</span>
           </h1>
           <p className="mt-1 text-xs text-slate-400">Built by Chelsea Gallagher</p>
-          <div className="mt-3 flex flex-wrap gap-2">
-            <Link
-              href="/price-sheet"
-              className="inline-block rounded-full border border-amber-600/50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-amber-400 hover:bg-amber-500/10"
-            >
-              Weekly bullion price sheet →
-            </Link>
-            <Link
-              href="/showcase"
-              className="inline-block rounded-full border border-amber-600/50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.15em] text-amber-400 hover:bg-amber-500/10"
-            >
-              Showcase cards →
-            </Link>
-          </div>
         </div>
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 px-5 py-3 shadow-2xl">

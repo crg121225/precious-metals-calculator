@@ -8,7 +8,6 @@
 //  - He marks items sold out.
 // Nothing is posted anywhere. He prints the sheet or downloads an image and posts it himself.
 
-import Link from 'next/link';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import AboutThisTool from '../components/AboutThisTool';
 import {
@@ -431,35 +430,33 @@ export default function PriceSheet() {
   };
 
   const input =
-    'rounded border border-slate-300 bg-white px-2 py-1 text-sm text-slate-900 focus:border-amber-600 focus:outline-none';
+    'rounded border border-slate-700 bg-slate-900 px-2 py-1 text-sm text-slate-100 focus:border-amber-500 focus:outline-none';
   const button =
     'rounded-full border px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.12em] disabled:cursor-not-allowed disabled:opacity-50';
-  const primary = `${button} border-amber-700 bg-amber-600 text-white hover:bg-amber-500`;
-  const secondary = `${button} border-slate-300 bg-white text-slate-700 hover:border-slate-500`;
+  const primary = `${button} border-amber-600/40 bg-amber-600/90 text-slate-950 hover:bg-amber-500`;
+  const secondary = `${button} border-slate-700 bg-slate-900 text-slate-200 hover:border-slate-500`;
 
   return (
-    <main className="min-h-screen bg-slate-100 p-4 text-slate-900 md:p-8 print:bg-white print:p-0">
-      <header className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-3 print:hidden">
+    <main className="min-h-screen bg-slate-950 p-4 text-slate-100 md:p-8 print:bg-white print:p-0 print:text-black">
+      <header className="mx-auto mb-6 flex max-w-7xl flex-wrap items-end justify-between gap-3 border-b border-slate-800 pb-5 print:hidden">
         <div>
-          <Link href="/" className="text-xs font-bold text-amber-700 hover:underline">
-            ← Back to the pricing calculator
-          </Link>
-          <h1 className="mt-1 text-2xl font-black tracking-tight">Weekly Bullion Price Sheet</h1>
-          <p className="text-sm text-slate-600">
+          <span className="text-xs font-bold uppercase tracking-[0.35em] text-amber-500">Weekly</span>
+          <h1 className="mt-1 text-3xl font-black tracking-tight text-white">Bullion Price Sheet</h1>
+          <p className="text-sm text-slate-400">
             Your premiums, your prices. Fill in the sheet, check it, then print it or save it as an image to post.
           </p>
         </div>
       </header>
 
       {/* Step 1: closing prices */}
-      <section className="mx-auto mb-6 max-w-7xl rounded-xl border border-slate-300 bg-white p-5 print:hidden">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">1. Closing spot prices</h2>
+      <section className="mx-auto mb-6 max-w-7xl rounded-xl border border-slate-700 bg-slate-900 p-5 print:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-amber-500">1. Closing spot prices</h2>
         <p className="mt-1 text-xs text-slate-500">
           Type the close you want to use, the way you write it at the top of your sheet, or fill them in from the market
           and adjust.
         </p>
         <div className="mt-3 flex flex-wrap items-end gap-4">
-          <label className="text-xs text-slate-600">
+          <label className="text-xs text-slate-400">
             Sheet date
             <input
               className={`${input} mt-1 block w-28`}
@@ -468,7 +465,7 @@ export default function PriceSheet() {
             />
           </label>
           {SHEET_METALS.map((m) => (
-            <label key={m} className="text-xs text-slate-600">
+            <label key={m} className="text-xs text-slate-400">
               {METAL_SYMBOL[m]} close ($/oz)
               <input
                 className={`${input} mt-1 block w-32 font-mono`}
@@ -488,9 +485,9 @@ export default function PriceSheet() {
             {`Use the ${SHEET_DATE} sheet’s close`}
           </button>
         </div>
-        {fetchState.message && <p className="mt-2 text-xs text-slate-600">{fetchState.message}</p>}
+        {fetchState.message && <p className="mt-2 text-xs text-slate-400">{fetchState.message}</p>}
         {missingCloses.length > 0 && (
-          <p className="mt-2 text-xs text-amber-700">
+          <p className="mt-2 text-xs text-amber-400">
             No close entered for: {missingCloses.map((m) => METAL_SYMBOL[m]).join(', ')}. Those lines stay blank unless
             you type your own price.
           </p>
@@ -498,10 +495,10 @@ export default function PriceSheet() {
       </section>
 
       {/* Step 2: premiums and prices */}
-      <section className="mx-auto mb-6 max-w-7xl rounded-xl border border-slate-300 bg-white p-5 print:hidden">
+      <section className="mx-auto mb-6 max-w-7xl rounded-xl border border-slate-700 bg-slate-900 p-5 print:hidden">
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
-            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">2. Premiums and prices</h2>
+            <h2 className="text-sm font-bold uppercase tracking-wider text-amber-500">2. Premiums and prices</h2>
             <p className="mt-1 max-w-3xl text-xs text-slate-500">
               {`Price = melt value + your premium. Starting premiums were worked out from your ${SHEET_DATE} sheet, so `}
               using that sheet&rsquo;s close gives back the same prices you wrote. Type a number in{' '}
@@ -509,7 +506,7 @@ export default function PriceSheet() {
             </p>
           </div>
           <div className="flex flex-wrap items-end gap-2">
-            <label className="text-xs text-slate-600">
+            <label className="text-xs text-slate-400">
               Round calculated prices
               <select
                 className={`${input} mt-1 block`}
@@ -536,7 +533,7 @@ export default function PriceSheet() {
         <div className="mt-4 space-y-5 md:hidden">
           {groups.map((g) => (
             <div key={g.section}>
-              <p className="mb-2 text-xs font-black uppercase tracking-wider text-amber-800">{g.section}</p>
+              <p className="mb-2 text-xs font-black uppercase tracking-wider text-amber-500">{g.section}</p>
               <div className="space-y-2">
                 {g.rows.map((row) => {
                   const p = row.product;
@@ -544,7 +541,7 @@ export default function PriceSheet() {
                     <div
                       key={p.id}
                       className={`rounded-lg border p-3 ${
-                        row.soldOut ? 'border-slate-200 bg-slate-50 text-slate-400' : 'border-slate-200 bg-white'
+                        row.soldOut ? 'border-slate-800 bg-slate-950 text-slate-400' : 'border-slate-800 bg-slate-900'
                       }`}
                     >
                       <div className="flex items-start justify-between gap-2">
@@ -579,7 +576,7 @@ export default function PriceSheet() {
                           My price
                           <input
                             className={`${input} mt-0.5 block w-full py-2 text-right font-mono text-base ${
-                              row.myPrice !== null ? 'border-amber-500 bg-amber-50 font-bold' : ''
+                              row.myPrice !== null ? 'border-amber-500 bg-amber-500/10 font-bold' : ''
                             }`}
                             inputMode="decimal"
                             placeholder="optional"
@@ -599,7 +596,7 @@ export default function PriceSheet() {
                           className={`rounded-md border px-3 py-2 text-xs font-bold ${
                             row.soldOut
                               ? 'border-slate-500 bg-slate-600 text-white'
-                              : 'border-slate-300 bg-white text-slate-600'
+                              : 'border-slate-700 bg-slate-900 text-slate-400'
                           }`}
                         >
                           {row.soldOut ? 'Sold out' : 'In stock'}
@@ -617,7 +614,7 @@ export default function PriceSheet() {
         <div className="mt-4 hidden overflow-x-auto md:block">
           <table className="w-full min-w-[760px] text-left text-sm">
             <thead>
-              <tr className="border-b border-slate-300 text-[11px] uppercase tracking-wider text-slate-500">
+              <tr className="border-b border-slate-700 text-[11px] uppercase tracking-wider text-slate-500">
                 <th className="py-2 pr-3">Product</th>
                 <th className="py-2 pr-3 text-right">Melt</th>
                 <th className="py-2 pr-3 text-right">Premium (+$)</th>
@@ -629,14 +626,14 @@ export default function PriceSheet() {
             {groups.map((g) => (
               <tbody key={g.section}>
                 <tr>
-                  <td colSpan={6} className="pt-4 pb-1 text-xs font-black uppercase tracking-wider text-amber-800">
+                  <td colSpan={6} className="pt-4 pb-1 text-xs font-black uppercase tracking-wider text-amber-500">
                     {g.section}
                   </td>
                 </tr>
                 {g.rows.map((row) => {
                   const p = row.product;
                   return (
-                    <tr key={p.id} className={`border-b border-slate-100 ${row.soldOut ? 'text-slate-400' : ''}`}>
+                    <tr key={p.id} className={`border-b border-slate-800 ${row.soldOut ? 'text-slate-400' : ''}`}>
                       <td className="py-1.5 pr-3">
                         <div>{p.name}</div>
                         {p.metal && p.pureOz !== undefined && (
@@ -670,7 +667,7 @@ export default function PriceSheet() {
                         <input
                           aria-label={`My price for ${p.name}`}
                           className={`${input} w-28 text-right font-mono ${
-                            row.myPrice !== null ? 'border-amber-500 bg-amber-50 font-bold' : ''
+                            row.myPrice !== null ? 'border-amber-500 bg-amber-500/10 font-bold' : ''
                           }`}
                           inputMode="decimal"
                           placeholder="optional"
@@ -702,10 +699,10 @@ export default function PriceSheet() {
       </section>
 
       {/* Step 3: sheet details and sharing */}
-      <section className="mx-auto mb-6 max-w-7xl rounded-xl border border-slate-300 bg-white p-5 print:hidden">
-        <h2 className="text-sm font-bold uppercase tracking-wider text-slate-700">3. Print or post</h2>
+      <section className="mx-auto mb-6 max-w-7xl rounded-xl border border-slate-700 bg-slate-900 p-5 print:hidden">
+        <h2 className="text-sm font-bold uppercase tracking-wider text-amber-500">3. Print or post</h2>
         <div className="mt-3 grid gap-3 md:grid-cols-2">
-          <label className="text-xs text-slate-600">
+          <label className="text-xs text-slate-400">
             Shop name
             <input
               className={`${input} mt-1 block w-full`}
@@ -713,7 +710,7 @@ export default function PriceSheet() {
               onChange={(e) => update('shopName', e.target.value)}
             />
           </label>
-          <label className="text-xs text-slate-600">
+          <label className="text-xs text-slate-400">
             Address and phone line
             <input
               className={`${input} mt-1 block w-full`}
@@ -721,7 +718,7 @@ export default function PriceSheet() {
               onChange={(e) => update('shopLine', e.target.value)}
             />
           </label>
-          <label className="text-xs text-slate-600">
+          <label className="text-xs text-slate-400">
             Sheet title
             <input
               className={`${input} mt-1 block w-full`}
@@ -729,7 +726,7 @@ export default function PriceSheet() {
               onChange={(e) => update('title', e.target.value)}
             />
           </label>
-          <label className="text-xs text-slate-600">
+          <label className="text-xs text-slate-400">
             Note for this week (optional)
             <textarea
               className={`${input} mt-1 block w-full`}
@@ -756,7 +753,7 @@ export default function PriceSheet() {
             Print sheet
           </button>
         </div>
-        {shareMessage && <p className="mt-2 text-xs text-red-600">{shareMessage}</p>}
+        {shareMessage && <p className="mt-2 text-xs text-red-400">{shareMessage}</p>}
         <p className="mt-2 text-xs text-slate-500">
           Nothing is posted for you.{' '}
           {canShareFiles
@@ -769,7 +766,7 @@ export default function PriceSheet() {
       <h2 className="mx-auto mb-2 max-w-7xl text-xs font-bold uppercase tracking-wider text-slate-500 print:hidden">
         Preview
       </h2>
-      <article className="mx-auto max-w-4xl rounded-lg bg-white p-4 shadow-xl sm:p-8 print:max-w-none print:rounded-none print:p-6 print:shadow-none">
+      <article className="mx-auto max-w-4xl rounded-lg bg-white text-slate-900 p-4 shadow-xl sm:p-8 print:max-w-none print:rounded-none print:p-6 print:shadow-none">
         <header className="border-b-2 border-slate-300 pb-3">
           <p className="text-3xl font-black">{settings.shopName}</p>
           <p className="text-xl font-bold text-amber-800">{settings.title}</p>
@@ -816,7 +813,7 @@ export default function PriceSheet() {
         </footer>
       </article>
 
-      <AboutThisTool light />
+      <AboutThisTool />
     </main>
   );
 }
